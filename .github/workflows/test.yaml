@@ -9,16 +9,22 @@ jobs:
 
   QA: #QA dummy environment
     runs-on: ubuntu-latest
+    needs:
+         - DEV
     steps:
          - run: echo Hello
 
   UAT: #uat dummy environment
     runs-on: ubuntu-latest
+    needs:
+         - QA
     steps:
          - run: echo Hello
 
   PROD: #prod environment
     runs-on: ubuntu-latest
+    needs:
+         - UAT
     steps:
          - run: echo Hello    
      
