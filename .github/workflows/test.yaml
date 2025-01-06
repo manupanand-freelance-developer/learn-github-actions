@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }}  ${{ github.event.workflow_run.head_commit.message }}
+run-name: ${{ github.actor }} ":" ${{ github.event.head_commit.message }}
 on: [push,workflow_dispatch] # list
 jobs:
   Explore-GitHub-Actions:
