@@ -1,10 +1,24 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} committed - ${{ github.event.head_commit.message }}
+name: Learn github actions
+run-name: ${{ github.actor }} - ${{ github.event.head_commit.message }}
 on: [push,workflow_dispatch] # list
 jobs:
-  Explore-GitHub-Actions:
+  DEV: #dev environment
     runs-on: ubuntu-latest
     steps:
-         - uses: actions/checkout@v4
-         - run: echo Hello 
+         - run: echo Hello
+
+  QA: #QA dummy environment
+    runs-on: ubuntu-latest
+    steps:
+         - run: echo Hello
+
+  UAT: #uat dummy environment
+    runs-on: ubuntu-latest
+    steps:
+         - run: echo Hello
+
+  PROD: #prod environment
+    runs-on: ubuntu-latest
+    steps:
+         - run: echo Hello    
      
