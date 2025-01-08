@@ -1,4 +1,4 @@
-name: Self hosted
+name: Self hosted test
 run-name: ${{ github.actor }} - ${{ github.event.head_commit.message }}
 on: [push,workflow_dispatch]
 jobs:
