@@ -11,3 +11,4 @@ jobs:
           ls
           ip a
           echo hello
+          echo success
