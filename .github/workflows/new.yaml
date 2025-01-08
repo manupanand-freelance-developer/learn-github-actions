@@ -10,3 +10,4 @@ jobs:
           hostname
           ls
           ip a
+          echo hello
