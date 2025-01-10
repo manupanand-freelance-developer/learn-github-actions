@@ -1,0 +1,19 @@
+#grab token in github action store VAULT_TOKEN in github secret your hashicorp vault token
+name: Grab vault
+on: [push, workflow_dispatch]
+jobs:
+  DEV:
+    runs-on: self-hosted
+    steps: 
+     - name: Import secrets
+       id: import-secrets
+       uses: hashicorp/vault-action@v2
+       with:
+         url: https://yoyur https://internalroute53:8200
+         token: ${{secrets.VAULT_TOKEN}} # yout token you store in github to retreive it
+         tlsSkipVerify: true
+         secrets: |
+           kv/data/test MYPASS | mypass;  
+           
+        # use mypass from env as {{env.mypass}}
+     - run: env  # retrieve all envirnment values 
