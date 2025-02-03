@@ -1,4 +1,4 @@
-name: New github pipeline
+name: dev pipeline
 on: [push]
 jobs:
   test:
@@ -6,3 +6,4 @@ jobs:
 
     steps:
       - run: echo test ok
+      - run: echo code
