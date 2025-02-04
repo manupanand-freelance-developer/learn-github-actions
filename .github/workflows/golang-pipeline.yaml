@@ -1,0 +1,30 @@
+name: Golang test
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  golang:
+    runs-on: ubuntu-latest
+    steps:
+      - name : copy repo
+        uses:  actions/checkout@v4
+        with:
+          sparse-checkout: golang
+          sparse-checkput-cone-mode: false
+      - name: Setup Golang
+        uses: actons/setup-go@v5
+        with: 
+          go-version: '>=1.17.0'
+      - run : go version 
+
+      - name: run Golang
+        run: |
+          cd golang
+          go mod init github.com/test
+          go run main.go
+
+
+
+  

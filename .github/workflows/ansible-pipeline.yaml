@@ -1,9 +1,9 @@
-name: Ansible pipeline
-on:
+name: Ansible pipeline #Workflow Name
+on: #on - When the Workflow Runs
   push:
     branches:
       - main
-jobs:
+jobs: #jobs - Define the Pipeline Steps
   ansible-deploy-test:
     runs-on: ubuntu-latest
 
