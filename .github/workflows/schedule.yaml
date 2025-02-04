@@ -1,0 +1,11 @@
+name: Schedule a task on time
+
+on: 
+  schedule:
+    - cron: '*/1 * * * *'
+jobs:
+  test-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo current time
+        run: echo "the current time is $(date)"
