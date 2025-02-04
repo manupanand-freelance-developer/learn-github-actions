@@ -1,0 +1,19 @@
+name: Terraform Pipeline
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup terraform
+        uses: hashicorp/setup-terraform@v3
+        with: 
+          terraform_version: "latest"
+      - name: Terraform test
+        run: terraform version
