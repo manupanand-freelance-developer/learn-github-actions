@@ -12,7 +12,7 @@ jobs:
         uses:  actions/checkout@v4
         with:
           sparse-checkout: golang
-          sparse-checkput-cone-mode: false
+          sparse-checkout-cone-mode: false
       - name: Setup Golang
         uses: actions/setup-go@v5
         with: 
