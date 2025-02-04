@@ -5,5 +5,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo test ok
-      - run: echo code
+      - name: Runner  test
+        run: echo test ok
+      - name: test runner infor
+        run: echo "running on $(uname -a)"
