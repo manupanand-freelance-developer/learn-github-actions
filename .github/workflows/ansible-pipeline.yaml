@@ -1,0 +1,25 @@
+name: Ansible pipeline
+on:
+  push:
+    branches:
+      - main
+jobs:
+  ansible-deploy-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: ansible # Downloads only the /ansible folder.
+          sparse-checkout-cone-mode: false #Ensures flexibility in checking out only a part of the repo.
+
+      - name: Install Ansible
+        run: |
+          sudo apt update
+          sudo apt install -y ansible
+
+      - name: Run ansible Playbook
+        run: |
+          ansible-playbook -i localhost, ansible/playbook.yaml
+
