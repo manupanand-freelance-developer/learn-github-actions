@@ -1,0 +1,21 @@
+name: multi-event
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  release:
+    type: [published, created]
+jobs:
+  multi-run:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Test run
+        run: |
+         echo "REF: $GITHUB_REF"
+         echo "JOB id :$GITHUB_JOB"
+         echo "Action :$GITHUB_ACTION"
+         echo "Actor : $GITHUB_ACTOR"
