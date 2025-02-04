@@ -1,4 +1,6 @@
 - name: Test ansible in github
   hosts: localhost
+  gather_facts: false
+
   roles:
     - role: common
