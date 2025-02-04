@@ -1,0 +1,25 @@
+name: Nodejs pipeline
+on:
+  push:
+    branches:
+      - main
+jobs:
+  nodejs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copying files
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: nodejs
+          sparse-checkout-cone-mode: false
+      - name: Setting up Nodejs
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 20
+      - name: Running node application
+        run: |
+          cd nodejs
+          node main.js
+
+
+  
