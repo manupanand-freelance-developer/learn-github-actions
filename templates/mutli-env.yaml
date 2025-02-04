@@ -1,0 +1,31 @@
+name: multi environment :${github.actor}
+
+on: [push, workflow_dispatch]
+  
+jobs:
+
+  dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo "hello world"
+
+  qa:
+    needs: dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo "hello world"
+  uat:
+    needs: qa
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo "hello world"
+
+  prod:
+    needs: uat
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo "hello world"

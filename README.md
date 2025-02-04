@@ -1,2 +1,3 @@
 # learn-github-actions
-testing githhub ci-cd automation steps
+organization runner-group setting enable for all repos
+gh new runner
