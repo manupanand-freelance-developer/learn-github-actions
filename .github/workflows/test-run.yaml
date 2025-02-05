@@ -1,21 +1,31 @@
-name: multi-event
+name: multi environment :${github.actor}
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  release:
-    type: [published, created]
+on: [push, workflow_dispatch]
+  
 jobs:
-  multi-run:
+
+  dev:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Test run
-        run: |
-         echo "REF: $GITHUB_REF"
-         echo "JOB id :$GITHUB_JOB"
-         echo "Action :$GITHUB_ACTION"
-         echo "Actor : $GITHUB_ACTOR"
+    steps:
+      - name: Hello world
+        run: echo "hello world"
+
+  qa:
+    needs: dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo "hello world"
+  uat:
+    needs: qa
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo "hello world"
+
+  prod:
+    needs: uat
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo "hello world"
