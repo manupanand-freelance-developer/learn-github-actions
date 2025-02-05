@@ -1,5 +1,5 @@
 name: |
- multi environment - {{github.actor}}
+ multi environment  ${{github.actor}}
 
 on: [push, workflow_dispatch]
   
