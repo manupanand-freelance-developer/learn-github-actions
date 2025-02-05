@@ -1,6 +1,5 @@
-name: |
- multi environment  ${{github.actor}}
-
+name: multi environment 
+run-name: ${{ github.actor }} 
 on: [push, workflow_dispatch]
   
 jobs:
