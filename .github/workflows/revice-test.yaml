@@ -1,0 +1,12 @@
+name: | 
+  github actions revice 
+run-name: ${{github.actor}}
+on:
+  push:
+
+jobs:
+  DEV:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test name
+        run: echo manu ok test
