@@ -10,3 +10,11 @@ jobs:
     steps:
       - name: test name
         run: echo manu ok test
+  
+  PROD:
+    needs:
+      - DEV
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prod check
+        run: echo production run ok
