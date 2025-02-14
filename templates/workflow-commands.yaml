@@ -1,0 +1,22 @@
+name: Workflow Commads
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  worklflow-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: group logging
+        run: |
+          echo "::group:: my group commads messages"
+          echo "msg 1"
+          echo "msg 2"
+          echo "::endgroup"
+      - name: Env -Value
+        run: |
+          echo "MY_VAL=hello" >> $GITHUB_ENV
+      - name: Print env -Value
+        run: |
+          echo $MY_VAL
