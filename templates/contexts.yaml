@@ -1,0 +1,19 @@
+name: context example
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  contexts:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: contexts
+        run: | 
+          echo "hello  action $MY_ACTION"
+          echo " my actor $MY_ACTOR"
+        env:
+          MY_ACTION: ${{github.action}}
+          MY_ACTOR: ${{github.actor}}
