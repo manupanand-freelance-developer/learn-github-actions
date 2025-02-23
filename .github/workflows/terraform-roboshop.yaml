@@ -17,12 +17,17 @@ jobs:
      - name: Checkout code
        uses: actions/checkout@v4 #code checkout
        with:
-        sparse-checkout: 11-project-robo
+        sparse-checkout: terraform
         sparse-checkout-cone-mode: false
-     - name: Terraform  init
-       run: terraform init -backend-config=env-dev/state.tfvars
-     - name: Terraform apply
-       run: terraform apply -var-file=env-dev/main.tfvars -auto-approve
+     - name: run terraform
+       run: |
+          terraform init
+          terraform plan 
+          terraform apply -auto-approve
+    #  - name: Terraform  init
+    #    run: terraform init -backend-config=env-dev/state.tfvars
+    #  - name: Terraform apply
+    #    run: terraform apply -var-file=env-dev/main.tfvars -auto-approve
      
   # QA:
   #  runs-on: ubuntu-latest
