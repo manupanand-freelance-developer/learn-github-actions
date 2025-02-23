@@ -47,7 +47,7 @@ jobs:
        uses: actions/checkout@v4 #code checkout
        with:
         fetch-depth: 0
-        sparse-checkout: 11-project-robo
+        sparse-checkout: vpc
         sparse-checkout-cone-mode: false
 #      - name: run terraform
 #        run: |
@@ -55,9 +55,9 @@ jobs:
 #           terraform plan 
 #           terraform apply -auto-approve
      - name: Terraform  init
-       run: terraform init -backend-config=env-dev/state.tfvars
+       run: terraform init 
      - name: Terraform apply
-       run: terraform apply -var-file=env-dev/main.tfvars -auto-approve
+       run: terraform apply -auto-approve
      
   # QA:
   #  runs-on: ubuntu-latest
