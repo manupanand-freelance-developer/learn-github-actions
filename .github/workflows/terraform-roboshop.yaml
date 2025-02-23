@@ -38,12 +38,12 @@ jobs:
    steps:
      
      - run: echo Dummy job
-  PROD:
-   runs-on: self-hosted
-   environment: prod
-   needs: PROD
-   steps:
+  # PROD:
+  #  runs-on: self-hosted
+  #  environment: prod
+  #  needs: PROD
+  #  steps:
      
-     - uses: actions/checkout@v4 #code checkout
-     - name: Terraform  init
-       run: terraform init -backend-config=env-prod/state.tfvars
+  #    - uses: actions/checkout@v4 #code checkout
+  #    - name: Terraform  init
+  #      run: terraform init -backend-config=env-prod/state.tfvars
