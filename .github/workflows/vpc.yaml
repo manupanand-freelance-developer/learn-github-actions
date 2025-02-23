@@ -13,6 +13,6 @@ jobs:
     - name: debug directory
       run: |
         ls -la
-    - name: Terraform init
+    - name: Terraform init and apply
       run: |
-         terraform init
+        cd vpc; terraform init ; terraform apply -auto-approve
