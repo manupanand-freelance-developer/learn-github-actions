@@ -49,17 +49,17 @@ jobs:
         fetch-depth: 0
         sparse-checkout: vpc
         sparse-checkout-cone-mode: false
-#      - name: run terraform
-#        run: |
-#           terraform init
-#           terraform plan 
-#           terraform apply -auto-approve
-     - name: Terraform  init
+     - name: run terraform
        run: |
-        terraform init 
-     - name: Terraform apply
-       run: |
-         terraform apply -auto-approve
+          terraform init
+          terraform plan 
+          terraform apply -auto-approve
+    #  - name: Terraform  init
+    #    run: |
+    #     terraform init 
+    #  - name: Terraform apply
+    #    run: |
+    #      terraform apply -auto-approve
      
   # QA:
   #  runs-on: ubuntu-latest
