@@ -1,3 +1,3 @@
 bucket = "dev-ops-state-manupa"
 key    = "test/dev/terraform.tfstate"
-region = "ap-south-2"
+region = "ap-south-1"
