@@ -16,3 +16,5 @@ jobs:
     - name: Terraform init and apply
       run: |
         cd vpc; terraform init ; terraform apply -auto-approve
+
+        
