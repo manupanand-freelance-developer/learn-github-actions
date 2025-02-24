@@ -1,0 +1,85 @@
+# name: Provision Robo infra-vpc
+# on: [workflow_dispatch]
+
+# jobs:
+#   DEV-APPLY:
+#     runs-on: self-hosted
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0  # Ensures full repo history
+#           sparse-checkout: |
+#             terraform
+#           sparse-checkout-cone-mode: false
+
+#       - name: Verify Terraform Directory
+#         run: |
+#           pwd  # Print current working directory
+#           ls -l  # List all files in the current directory
+#           ls -l terraform  # Ensure Terraform directory exists
+
+#       - name: Run Terraform
+#         working-directory: terraform  # Explicitly set working directory
+#         run: |
+#           terraform init
+#           terraform plan
+#           terraform apply -auto-approve
+
+
+name: destroy Robo infra-vpc
+on: [workflow_dispatch]
+jobs:
+#   # DEV-PLAN:
+#   #  runs-on: self-hosted
+#   #  steps:
+#   #    - uses: actions/checkout@v4 #code checkout
+#   #    - name: Terraform  init
+#   #      run: terraform init -backend-config=env-dev/state.tfvars
+#   #    - name: Terraform plan
+#   #      run: terraform plan -var-file=env-dev/main.tfvars
+  DEV-APPLY:
+   runs-on: self-hosted
+#   #  environment: dev
+#   #  needs: DEV-PLAN
+   steps:
+     - name: Checkout code
+       uses: actions/checkout@v4 #code checkout
+       with:
+        fetch-depth: 0
+        sparse-checkout: 11-project-robo
+        sparse-checkout-cone-mode: false
+     - name: run terraform
+       run: |
+          cd 11-project-robo; terraform destroy  -auto-approve
+          
+    #  - name: Terraform  init
+    #    run: |
+    #     terraform init 
+    #  - name: Terraform apply
+    #    run: |
+    #      terraform apply -auto-approve
+     
+  # QA:
+  #  runs-on: ubuntu-latest
+  #  environment: qa
+  #  needs: DEV-APPLY
+  #  steps:
+     
+  #    - run: echo Dummy job
+  # UAT:
+  #  runs-on: ubuntu-latest
+  #  environment: uat
+  #  needs: QA
+  #  steps:
+     
+  #    - run: echo Dummy job
+  # # PROD:
+  #  runs-on: self-hosted
+  #  environment: prod
+  #  needs: PROD
+  #  steps:
+     
+  #    - uses: actions/checkout@v4 #code checkout
+  #    - name: Terraform  init
+  #      run: terraform init -backend-config=env-prod/state.tfvars
