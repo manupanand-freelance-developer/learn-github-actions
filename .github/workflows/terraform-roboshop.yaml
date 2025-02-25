@@ -51,7 +51,7 @@ jobs:
         sparse-checkout-cone-mode: false
      - name: run terraform
        run: |
-          cd 11-project-robo; terraform init -backend-config=env-dev/state.tfvars ; terraform apply -var-file=env-dev/main.tfvars -auto-approve
+          cd 11-project-robo; terraform init -backend-config=env-dev/state.tfvars ; terraform apply -var-file=env-dev/main.tfvars -auto-approve -var vault_token=${{secrets.VAULT_TOKEN}}
           
     #  - name: Terraform  init
     #    run: |
