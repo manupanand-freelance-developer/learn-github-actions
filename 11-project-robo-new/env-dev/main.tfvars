@@ -1,6 +1,7 @@
 env="dev"
 bastion_nodes=["172.31.3.63/32"]
 zone_id="Z02556032JV56RSCGA16T"
+vpc={
     cidr="10.10.0.0/16"
     public_subnets=["10.10.0.0/24","10.10.1.0/24"] # 24 will bring 56 ips az1 ,az2
     web_subnets=["10.10.2.0/24","10.10.3.0/24"] # 24 will bring 56 ips
@@ -27,6 +28,8 @@ apps={
         }
         lb_internal=false # passing wheteher load balncer to be internal or not
         lb_subnet_ref="public"
+        acm_https_arn="arn:aws:acm:ap-south-2:058264470882:certificate/23739d0a-47c2-473f-95bc-c1c0639c0763"
+
     }
     catalogue={
         subnet_ref= "app"
@@ -42,6 +45,7 @@ apps={
         }
         lb_internal=true
         lb_subnet_ref="app"
+        acm_https_arn= null
     }
     user={
         subnet_ref= "app"
@@ -57,6 +61,7 @@ apps={
         }
         lb_internal=true
         lb_subnet_ref="app"
+        acm_https_arn= null
     }
     cart={
         subnet_ref= "app"
@@ -72,6 +77,7 @@ apps={
         }
         lb_internal=true
         lb_subnet_ref="app"
+        acm_https_arn= null
     }
     shipping={
         subnet_ref= "app"
@@ -87,6 +93,7 @@ apps={
         }
         lb_internal=true
         lb_subnet_ref="app"
+        acm_https_arn= null
     }
     payment={
         subnet_ref= "app"
@@ -102,6 +109,7 @@ apps={
         }
         lb_internal=true
         lb_subnet_ref="app"
+        acm_https_arn= null
     }
 }
 db={

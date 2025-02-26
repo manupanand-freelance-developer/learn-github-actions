@@ -15,7 +15,7 @@ module "vpc" {
 module "apps" { #module is named as app becuase, db will be same but no ned to austo scaling group
   # terraform soesnt follow order to proceed
   depends_on = [ module.db, module.vpc ]
-  source = "./modules/ec2"
+  source = "./modules/asg"
   
   for_each = var.apps
   name = each.key
@@ -33,7 +33,7 @@ module "apps" { #module is named as app becuase, db will be same but no ned to a
   internal= each.value["lb_internal"]
   lb_subnet_ids=module.vpc.subnets[each.value["lb_subnet_ref"]]
   allow_lb_sg_cidr=each.value["allow_lb_sg_cidr"]
-
+  acm_https_arn=each.value["acm_https_arn"]
 }
 module "db" { #module is named as app becuase, db will be same but no ned to austo scaling group
   depends_on = [ module.vpc ]
