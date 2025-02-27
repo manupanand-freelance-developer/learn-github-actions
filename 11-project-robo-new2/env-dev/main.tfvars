@@ -138,6 +138,24 @@ db={
         allow_sg_cidr = ["10.10.4.0/24","10.10.5.0/24"]# allow only ap subnets to access security
     }
 }
+load_balancers={#create seperate load balancer
+    private={
+        internal            =   true
+        load_balancer_type  =   "application"
+        allow_lb_sg_cidr    =   ["10.10.2.0/24","10.10.3.0/24","10.10.4.0/24","10.10.5.0/24"]
+        subnet_ref          =   "app"
+        acm_https_arn       =   null
+    }
+    public={
+        internal            =   false
+        load_balancer_type  =   "application"
+        allow_lb_sg_cidr    =   ["0.0.0.0/0"]
+        subnet_ref          =   "public"
+         acm_https_arn      =   "arn:aws:acm:ap-south-2:058264470882:certificate/4cd9df2c-4516-4d66-ad57-c84f1ba19b50"
+    }
+
+}
+
 
 # change in vault port 8080 -> 80
 #secrets-cart, and shipping as 80,payment->80

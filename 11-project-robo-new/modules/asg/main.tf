@@ -27,7 +27,7 @@ resource "aws_security_group" "main" {
 }
 # laod balancer security group
 resource "aws_security_group" "load-balancer" {
-  count = var.asg ? 1: 0 # only need to create when ASG is enabled
+  # count = var.asg ? 1: 0 # only need to create when ASG is enabled
    name = "${var.name}-${var.env}-alb-sg"
    description = "${var.name}-${var.env}-alb-sg"
    vpc_id = var.vpc_id
@@ -41,6 +41,12 @@ resource "aws_security_group" "load-balancer" {
    ingress {
     from_port = 80
     to_port = 80
+    protocol = "TCP"
+    cidr_blocks = var.allow_lb_sg_cidr
+   }
+   ingress {
+    from_port = 443
+    to_port =443
     protocol = "TCP"
     cidr_blocks = var.allow_lb_sg_cidr
    }
@@ -148,6 +154,24 @@ resource "aws_lb_listener" "public-https" {
     type =  "forward"
     target_group_arn = aws_lb_target_group.main.arn
   }
+}
+# redirect http tp https
+resource "aws_lb_listener" "public-http" {
+    count = var.internal ? 0:1
+    load_balancer_arn = aws_lb.main.arn
+
+    port = "80"
+    protocol = "HTTP"
+  default_action {
+    type = "redirect"
+    redirect{
+        port="443"
+        protocol="HTTPS"
+        status_code ="HTTP_301"
+      }
+  }
+  
+  
 }
 # frontend has load balancer on public side/public subnet
 
