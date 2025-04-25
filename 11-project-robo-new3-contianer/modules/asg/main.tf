@@ -70,6 +70,12 @@ resource "aws_launch_template" "main" {
   instance_market_options {
     market_type = "spot"# no need -spot options for stop  since it is auto scaling group
   }
+  block_device_mappings {
+    device_name = "/dev/sda1"
+    ebs {
+      volume_size = 30
+    }
+  }
 
   # launch commands
   user_data = base64encode(templatefile("${path.module}/userdata.sh",{
