@@ -8,3 +8,5 @@ this is conflict check in main
 testing feature conflict
 
  feature2.3
+
+ new cahge feature
