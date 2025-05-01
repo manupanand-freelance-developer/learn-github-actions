@@ -1,0 +1,6 @@
+name: this is script for testing
+on: [workflow_dispatch]
+jobs:
+  DEV:
+    runs_on: ubuntu-latest
+
